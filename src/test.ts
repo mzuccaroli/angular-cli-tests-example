@@ -24,9 +24,11 @@ getTestBed().initTestEnvironment(
   BrowserDynamicTestingModule,
   platformBrowserDynamicTesting()
 );
-// Then we find all the tests.
+// Then we find the tag matching tests or all of them.
 const context = require.context('./', true, /\.spec\.ts$/);
+const filterRegExp = new RegExp((__karma__.config.components) ? __karma__.config.components : '.spec.ts');
+const specFiles = context.keys().filter(path => filterRegExp.test(path));
 // And load the modules.
-context.keys().map(context);
+specFiles.map(context);
 // Finally, start Karma to run the tests.
 __karma__.start();
