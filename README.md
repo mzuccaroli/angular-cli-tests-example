@@ -9,7 +9,7 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 - Run `ng test --components testname` to execute the all the unit tests containing the string `testname` in their file name
 
 
-__see https://www.innoteam.it/blog/ for more info__
+__see https://www.innoteam.it/blog/eseguire-test-singoli-tramite-karma-ed-angular-cli for more info___
 
 
 
