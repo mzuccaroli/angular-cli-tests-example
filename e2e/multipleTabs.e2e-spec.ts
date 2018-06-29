@@ -1,5 +1,4 @@
 import {AppPage} from './app.po';
-import {browser, by, element} from 'protractor';
 
 describe('angular-cli-tests-example App', () => {
     let page: AppPage;
@@ -17,9 +16,9 @@ describe('angular-cli-tests-example App', () => {
         page.navigateTo();
         page.getNewTabLink().click();
 
-        browser.getAllWindowHandles().then(function (handles) {
-            expect(handles.length).toEqual(2);
-            browser.switchTo().window(handles[1]).then(function () {
+        page.getOpenedTabs().then(function (tabs) {
+            expect(tabs.length).toEqual(2);
+            page.goToTab(tabs[1]).then(function () {
                 expect(page.getParagraphText()).toEqual('Welcome to app!');
             });
         });

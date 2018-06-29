@@ -26,4 +26,12 @@ export class AppPage {
         });
     }
 
+    getOpenedTabs() {
+        return browser.getAllWindowHandles();
+    }
+
+    goToTab(tab) {
+        return browser.switchTo().window(tab);
+    }
+
 }
