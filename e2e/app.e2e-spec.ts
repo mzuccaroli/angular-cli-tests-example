@@ -1,6 +1,6 @@
 import { AppPage } from './app.po';
 
-describe('angular-cli-single-tests-example App', () => {
+describe('angular-cli-tests-example App', () => {
   let page: AppPage;
 
   beforeEach(() => {

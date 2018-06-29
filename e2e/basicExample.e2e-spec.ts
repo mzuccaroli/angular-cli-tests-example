@@ -1,6 +1,6 @@
 import {browser, by, element} from 'protractor';
 
-describe('angular-cli-single-tests-example App', () => {
+describe('angular-cli-tests-example App', () => {
 
     it('should display welcome message', () => {
         browser.get('/');
