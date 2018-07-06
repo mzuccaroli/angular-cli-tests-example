@@ -1,5 +1,7 @@
 import {browser} from 'protractor';
 
+const fs = require('fs');
+
 export class TestUtils {
 
     closeOpenedTabs() {
@@ -22,4 +24,26 @@ export class TestUtils {
     goToTab(tab) {
         return browser.switchTo().window(tab);
     }
+
+    public takeFailScreens() {
+
+        browser.takeScreenshot().then(function (png) {
+            jasmine.getEnv().addReporter(new function () {
+                this.specDone = function (result) {
+                    let filename = Date.now() + result.fullName.replace(/ /g, '_') + '.png';
+                    if (result.failedExpectations.length > 0) {
+                        filename = 'FAIL_' + filename;
+                        const screenShotDirectory = 'e2e/testresults/';
+                        const stream = fs.createWriteStream(screenShotDirectory + filename);
+
+                        stream.write(new Buffer(png, 'base64'));
+                        stream.end();
+                    } else {
+                        // SUCCESS TEST
+                    }
+                };
+            });
+
+        });
+    };
 }
